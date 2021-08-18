@@ -33,7 +33,6 @@ const App = () => {
 
   useEffect(()=>{
     getData();   
-    console.log('effect');    
   }, []);
 
   const handleTodoAdd = () => {
@@ -43,7 +42,6 @@ const App = () => {
     }else if(todoItem.description === ''){
       showToastWithGravity('Description is required');
     }else{
-      console.log('key', key); 
       setTodoItem({title: '', description: ''});
       storeData({key, ...todoItem});
     }
@@ -78,7 +76,6 @@ const App = () => {
       let storedTodos = await AsyncStorage.getItem('todo');
       if(storedTodos){
         storedTodos = JSON.parse(storedTodos);
-        console.log('dt', data, todos);
         storedTodos.push(data);
         setTodos([...storedTodos]);
         await AsyncStorage.setItem('todo', JSON.stringify(storedTodos));
